@@ -5,7 +5,14 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-redux": "^4.4.5",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "redux": "^3.6.0",
+    "redux-persist": "^5.10.0",
+    "superagent": "^2.3.0",
+    "superagent-promise": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "npm": "^6.9.0"
+  }
 }
