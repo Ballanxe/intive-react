@@ -5,5 +5,5 @@ import { playersHasErroed, playersAreLoading, playesrSuccessPayload } from './pl
 export default combineReducers({
 	playersHasErroed,
 	playersAreLoading,
-	playesrSuccessPayload
+	playesrSuccessPayload,
 });

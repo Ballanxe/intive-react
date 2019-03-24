@@ -30,6 +30,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "redux-promise-middleware": "^6.1.0",
+    "redux-promise-middleware-actions": "^2.1.0",
+    "redux-thunk-promise": "^2.0.1",
+    "whatwg-fetch": "^3.0.0"
   }
 }

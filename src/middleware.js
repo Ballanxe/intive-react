@@ -1,12 +1,13 @@
-
-
 const promiseMiddleware = store => next => action => {
+
+
   if (isPromise(action.payload)) {
-    store.dispatch({ type: 'ASYNC_START', subtype: action.type });
+    console.log("hola como estas")
     action.payload.then(
       res => {
         action.payload = res;
         store.dispatch(action);
+        
       },
       error => {
         action.error = true;
@@ -14,7 +15,7 @@ const promiseMiddleware = store => next => action => {
         store.dispatch(action);
       }
     );
-
+    
     return;
   }
 
@@ -25,6 +26,4 @@ function isPromise(v) {
   return v && typeof v.then === 'function';
 }
 
-export {
-  promiseMiddleware
-};
+export default promiseMiddleware

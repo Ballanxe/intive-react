@@ -1,3 +1,4 @@
+import {playersFetchData} from '../actions/players';
 
 export function playersHasErroed(state = false, action){
   switch (action.type){
@@ -21,13 +22,25 @@ export function playersAreLoading(state = false, action){
 
 export function playesrSuccessPayload(state = false, action){
   switch (action.type){
-    case 'PLAYERS_ARE_LOADED':
-      return action.payload
+    case 'PLAYERS_FETCH_DATA_SUCCESS':
+      return action.players
     default:
       return state
   }
 }
 
+// export function playersFetchPayload(state = null, action){
+//   switch (action.type) {
+//     case String(playersFetchData.pending):
+//       return action.payload
+//     case String(playersFetchData.fulfilled):
+//       return action.payload
+//     case String(playersFetchData.rejected):
+//       return action.payload
+//     default:
+//       return state;
+//   }
+// };
 // const defaultState = {
 //   appName: 'Super de pinga',
 // }
