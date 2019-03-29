@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 import agent from '../agent';
-import { connect } from 'react-redux'
-import { playersFetchData } from '../actions/players'
+import { connect } from 'react-redux';
+import { playersFetchData } from '../actions/players';
+
+import PlayersList from './PlayersList';
+import PlayersSearch from './PlayersSearch';
 
 
 const Promise = global.Promise;
@@ -46,22 +49,11 @@ class App extends Component {
 
     const {players} = this.props
     
-    // const players_list = Array.prototype.map.call(players, function(player){
-    //   return player.name
-    // });
-
-    console.log(players)
-
     return (
       <div className="container">
 
-        <h1>Hola Mundo</h1>
-        {
-          Array.prototype.map.call(players, (player, i)=>{
-            return <p key={i}>Nombre:{player.name}, Pais: {player.nationality}, Numero de camiseta: {player.jerseyNumber}</p>
-          })
-        }
-
+        <PlayersSearch/>
+        <PlayersList players={players} />
       </div>
     );
   }

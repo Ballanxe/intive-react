@@ -23,16 +23,6 @@ export function playersFetchDataSuccess(players){
 	};
 }
 
-// export function playersFetchData(url){
-
-// }
-
-// export const playersFetchData = createAsyncAction('PLAYERS_FETCH_DATA', async (url) => {
-//     const response = await fetch(url);
-//     console.log(response.json())
-//     return response.json();
-//   }); 
-
 
 export function playersFetchData(payload){
 
@@ -56,14 +46,4 @@ export function playersFetchData(payload){
 
 	};
 }
-
-
-// export function playersLoadingSuccess(payload){
-
-
-// 	return {
-// 		type: 'PLAYERS_ARE_LOADED',
-// 		payload
-// 	}
-// }
 
