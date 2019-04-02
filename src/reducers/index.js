@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { playersHasErroed, playersAreLoading, playesrSuccessPayload, PlayersSearch } from './playersList'
+import { playersHasErroed, playersAreLoading, playesrSuccessPayload, playersSuccessSearch } from './playersList'
 
 
 export default combineReducers({
 	playersHasErroed,
 	playersAreLoading,
 	playesrSuccessPayload,
-	PlayersSearch
+	playersSuccessSearch
 });

@@ -28,8 +28,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-
-
 class App extends Component {
 
   componentDidMount(){
