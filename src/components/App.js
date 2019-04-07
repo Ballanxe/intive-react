@@ -12,23 +12,34 @@ const Promise = global.Promise;
 
 
 const mapStateToProps = state => ({
+
   ...state.playersHasErroed,
   players: state.playesrSuccessPayload,
   loading: state.playersAreLoading,
-  
+  age_error: state.playersAgeError,
+  name_error: state.playersNameError,
+  form_valid: state.searchFormValid
+
 });
 
 
 const mapDispatchToProps = dispatch => ({
 
     onLoad: (payload) => 
+      dispatch(playersFetchData(payload)),
+    onNameError: (error) =>
+      dispatch({ type: 'NAME_ERROR', error}),
+    onAgeError: (error) =>
+      dispatch({ type: 'AGE_ERROR', error}),
+    onChangeField: (value, key) =>
+      dispatch({ type: 'UPDATE_FIELD_EDITOR', key, value })
 
-      dispatch(playersFetchData(payload))
-  
 })
 
 
 class App extends Component {
+
+
 
   componentDidMount(){
 
@@ -50,7 +61,9 @@ class App extends Component {
     return (
       <div className="container">
 
-        <PlayersSearch/>
+        <PlayersSearch
+          onChangeField
+        />
         <PlayersList players={players} />
       </div>
     );

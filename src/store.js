@@ -8,6 +8,7 @@ import playersList from './reducers/playersList'
 
 const reducer = combineReducers({playersList});
 
+// Probar si funciona sin thunkPromiseMiddleware
 const middleware = applyMiddleware(thunk,thunkPromiseMiddleware);
 
 const store = createStore(reducer, middleware);

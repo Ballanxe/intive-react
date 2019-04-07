@@ -23,6 +23,12 @@ export function playersFetchDataSuccess(players){
 	};
 }
 
+export function updatePlayersSearch(searchParameters){
+	return {
+	  type: "UPDATE_PLAYER_SEARCH",
+	  ...searchParameters
+	}
+}
 
 export function playersFetchData(payload){
 
@@ -31,11 +37,6 @@ export function playersFetchData(payload){
 
 		payload.then(
 			res =>{
-				// console.log(Object.entries(res))
-				// const players_list = Array.prototype.map.call(res, function(player){
-    //   		return player.name
-    // 		});
-
 				dispatch(playersFetchDataSuccess(res))
 				dispatch(playersAreLoading(false));
 			},
