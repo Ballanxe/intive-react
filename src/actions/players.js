@@ -24,9 +24,10 @@ export function playersFetchDataSuccess(players){
 }
 
 export function updatePlayersSearch(searchParameters){
+
 	return {
 	  type: "UPDATE_PLAYER_SEARCH",
-	  ...searchParameters
+	  data: searchParameters
 	}
 }
 

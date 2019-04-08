@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import agent from '../agent';
 import { connect } from 'react-redux';
-import { playersFetchData } from '../actions/players';
+import { bindActionCreators } from 'redux';
+import * as playersActions  from '../actions/players';
 
 import PlayersList from './PlayersList';
 import PlayersSearch from './PlayersSearch';
@@ -12,46 +13,28 @@ const Promise = global.Promise;
 
 
 const mapStateToProps = state => ({
-
-  ...state.playersHasErroed,
-  players: state.playesrSuccessPayload,
-  loading: state.playersAreLoading,
-  age_error: state.playersAgeError,
-  name_error: state.playersNameError,
-  form_valid: state.searchFormValid
-
-});
-
-
-const mapDispatchToProps = dispatch => ({
-
-    onLoad: (payload) => 
-      dispatch(playersFetchData(payload)),
-    onNameError: (error) =>
-      dispatch({ type: 'NAME_ERROR', error}),
-    onAgeError: (error) =>
-      dispatch({ type: 'AGE_ERROR', error}),
-    onChangeField: (value, key) =>
-      dispatch({ type: 'UPDATE_FIELD_EDITOR', key, value })
+  ...state.playersReducer,
 
 })
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(playersActions, dispatch) }
+}
 
 
 class App extends Component {
 
-
-
   componentDidMount(){
 
-    this.props.onLoad(agent.getAllPlayers())
+    this.props.actions.playersFetchData(agent.getAllPlayers())
 
   }
 
-  renderPlayers = array_object => {
-    Array.prototype.map.call(array_object, (player)=>{
-      return <p>{player.name}</p>
-    })
-  }
+  updatePlayersSearch = (newAttributes) => {
+
+    this.props.actions.updatePlayersSearch(newAttributes)
+
+  } 
 
 
   render() {
@@ -62,9 +45,11 @@ class App extends Component {
       <div className="container">
 
         <PlayersSearch
-          onChangeField
+          onChangeField={this.updatePlayersSearch}
         />
+        <div>Hola {this.props.number}</div>
         <PlayersList players={players} />
+
       </div>
     );
   }

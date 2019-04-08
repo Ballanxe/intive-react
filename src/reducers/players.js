@@ -3,10 +3,11 @@ import defaultState from '../store/initialStates/player.js'
 
 export function playersReducer(state=defaultState, action) {
   switch(action.type) {
-    case "UPDATE_PLAYERS_SEARCH":
+    case "UPDATE_PLAYER_SEARCH":
+
       return {
         ...state,
-        ...action.searchParameters,
+        ...action.data,
       };
     case "PLAYERS_HAS_ERROED":
       return {
