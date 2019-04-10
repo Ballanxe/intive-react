@@ -49,3 +49,7 @@ export function playersFetchData(payload){
 	};
 }
 
+export function playersSearchFilter(searchParameters, currentPlayers){
+
+	
+}

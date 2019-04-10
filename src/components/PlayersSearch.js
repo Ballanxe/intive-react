@@ -1,63 +1,101 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import * as playersAction  from '../actions/players';
 
-const mapStateToProps = state => ({
-	...state.playersReducer,
-
-})
 
 class PlayersSearch extends React.Component{
 
+	state = {
+		positions: [
+			"Goal Keeper",
+			"Defender",
+			"Midfielder",
+			"Forward",
+		]
+	}
 
-	updateFieldEvent = key => ev => this.props.onChangeField({
-		[key]:ev.target.value
-	});
 
-	// this.props.onChangeField({
-	// 	[key]: ev.target.value
-	// })
+	updateFieldEvent = key => ev => {
+
+		console.log({
+			[key]:ev.target.value
+		})
+
+		this.props.onChangeField({
+			[key]:ev.target.value
+		});
+	} 
+
 
 	changeName = this.updateFieldEvent('player_name')
 	changePosition = this.updateFieldEvent('position')
 	changeAge = this.updateFieldEvent('number')
 
+	onSubmitForm = () => {
+		this.props.onSubmitForm({
+			players_name:this.props.player_name,
+			position: this.props.position,
+			number: this.props.number
+		})
+	}
+
 
 	render(){
-
-		console.log(this.props)
 
 		return(
 			<div className="container">
 				<div className="row">
-					<form onSubmit="">
-						<fieldset className="form-group">
-							<input
-								className="form-control"
-								type="text"
-								name="player_name"
-								placeholder="Player Name"
-								onChange={this.changeName} />
-
-						</fieldset>
-						<select value="" onChange={this.changePosition} name="position">
-							<option value="">Select...</option>
-							<option value="Goal Keeper">Goal Keeper</option>
-							<option value="Defender">Defender</option>
-							<option value="Midfielder">Midfielder</option>
-							<option value="Forward">Forward</option>
-						</select>
-						<fieldset className="form-group" name="number">
-{/*							{error.number_error ? <div className="error">{error.number_error}</div> : null }*/}
-{/*							{error.long_age_error ? <div className="error">{error.long_age_error}</div> : null }*/}
-							<input
-								className="form-control"
-								type="text"
-								placeholder="Age"
-								onChange={this.changeAge} />
-
-						</fieldset>
+					<form noValidate autoComplete="off">
+						<TextField
+						  id="outlined-full-width"
+						  label="Player name"
+						  style={{ margin: 8 }}
+						  placeholder="Insert player name"
+						  fullWidth
+						  margin="normal"
+						  variant="outlined"
+						  onChange={this.changeName}
+						  InputLabelProps={{
+						    shrink: true,
+						  }}
+						/>
+						<TextField
+						  id="outlined-select-position"
+						  select
+						  label="PPosition"
+						  style={{
+						  	width:100,
+						  	color:"#ffffff",
+						  }}
+						  fullWidth
+						  value={this.props.position}
+						  onChange={this.changePosition}
+						  variant="outlined"
+						>
+					  {this.state.positions.map(position => (
+						    <MenuItem key={position} value={position}>
+						      {position}
+						    </MenuItem>
+						  ))}
+						</TextField>
+						<TextField
+						  id="outlined-full-width"
+						  label="Age"
+						  style={{ margin: 8 }}
+						  placeholder="Insert player's age"
+						  fullWidth
+						  margin="normal"
+						  variant="outlined"
+						  onChange={this.changeAge}
+						  InputLabelProps={{
+						    shrink: true,
+						  }}
+						/>
 						<button
 						  className="btn btn-primary"
 						  type="submit"
@@ -73,4 +111,17 @@ class PlayersSearch extends React.Component{
 
 }
 
+const mapStateToProps = state => ({
+	...state.playersReducer,
+
+})
+
+// export default withStyles(styles)(connect(mapStateToProps, () => ({}))(PlayersSearch));
 export default connect(mapStateToProps, () => ({}))(PlayersSearch);
+
+// export default compose(
+//     withStyles(styles, {
+//         name: 'PlayersSearch',
+//     }),
+//     connect(mapStateToProps,() => ({})),
+// )(PlayersSearch);

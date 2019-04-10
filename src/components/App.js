@@ -4,6 +4,8 @@ import agent from '../agent';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as playersActions  from '../actions/players';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import PlayersList from './PlayersList';
 import PlayersSearch from './PlayersSearch';
@@ -32,9 +34,16 @@ class App extends Component {
 
   updatePlayersSearch = (newAttributes) => {
 
-    this.props.actions.updatePlayersSearch(newAttributes)
+    this.props.actions.updatePlayersSearch(newAttributes);
 
-  } 
+    console.log(this.props)
+
+  }
+
+  searchFilter = (filterObject) => {
+    console.log(filterObject)
+    this.props.actions.playersSearchFilter(filterObject,this.props.players)
+  }
 
 
   render() {
@@ -42,15 +51,19 @@ class App extends Component {
     const {players} = this.props
     
     return (
+      <MuiThemeProvider>
+      <React.Fragment>
+        <AppBar title="React Players" />
+      </React.Fragment>
       <div className="container">
-
         <PlayersSearch
           onChangeField={this.updatePlayersSearch}
+          onSubmitForm={this.searchFilter}
         />
-        <div>Hola {this.props.number}</div>
         <PlayersList players={players} />
 
       </div>
+      </MuiThemeProvider>
     );
   }
 }
