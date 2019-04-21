@@ -12,9 +12,16 @@ class PlayersSearch extends React.Component{
 
 	state = {
 		positions: [
-			"Goal Keeper",
-			"Defender",
-			"Midfielder",
+			"Keeper",
+			"Attacking Midfield",
+			"Left-Back",
+			"Centre-Back",
+			"Defensive Midfield",
+			"Left Wing",
+			"Centre-Forward",
+			"Left Midfield",
+			"Central Midfield",
+			"Right-Back",
 			"Forward",
 		]
 	}
@@ -36,7 +43,8 @@ class PlayersSearch extends React.Component{
 	changePosition = this.updateFieldEvent('position')
 	changeAge = this.updateFieldEvent('number')
 
-	onSubmitForm = () => {
+	onSubmitForm = (e) => {
+		e.preventDefault()
 		this.props.onSubmitForm({
 			players_name:this.props.player_name,
 			position: this.props.position,
@@ -100,7 +108,7 @@ class PlayersSearch extends React.Component{
 						  className="btn btn-primary"
 						  type="submit"
 						  disabled=""
-						  onClick="">
+						  onClick={this.onSubmitForm}>
 						  Search
 						</button>
 					</form>

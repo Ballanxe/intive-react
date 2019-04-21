@@ -26,12 +26,10 @@ const PlayersList = props => {
 		  <Table >
 		    <TableHead>
 		      <TableRow>
-		        <TableCell>Name</TableCell>
-		        <TableCell >Country</TableCell>
-		        <TableCell >Jersey Number</TableCell>
-		        <TableCell >Date of birth</TableCell>
+		        <TableCell>Player</TableCell>
 		        <TableCell >Position</TableCell>
-		        <TableCell >Contract until</TableCell>
+		        <TableCell >Team</TableCell>
+		        <TableCell >Age</TableCell>
 		      </TableRow>
 		    </TableHead>
 		    <TableBody>
@@ -40,11 +38,9 @@ const PlayersList = props => {
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
 		      	  </TableCell>
-		      	  <TableCell align="right">{player.nationality}</TableCell>
-		      	  <TableCell align="right">{player.jerseyNumber}</TableCell>
-		      	  <TableCell align="right">{player.dateOfBirth}</TableCell>
 		      	  <TableCell align="right">{player.position}</TableCell>
-		      	  <TableCell align="right">{player.contractUntil}</TableCell>
+		      	  <TableCell align="right">{player.nationality}</TableCell>
+		      	  <TableCell align="right">{player.age}</TableCell>
 		      	</TableRow>
 		      )
 

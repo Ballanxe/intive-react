@@ -44,12 +44,17 @@ export function playersFetchData(payload){
 			error =>{
 				dispatch(playersHasErroed(true, error.response.body))
 			}
-		)
+		)			
 
 	};
 }
 
-export function playersSearchFilter(searchParameters, currentPlayers){
+export function playersSearchFilter(searchResults){
 
+
+	return {
+		type: 'UPDATE_PLAYER_SEARCH',
+		data:searchResults
+	}
 	
 }

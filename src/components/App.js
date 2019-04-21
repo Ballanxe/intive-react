@@ -42,13 +42,36 @@ class App extends Component {
 
   searchFilter = (filterObject) => {
     console.log(filterObject)
-    this.props.actions.playersSearchFilter(filterObject,this.props.players)
+    console.log(this.props.players)
+
+    let players = this.props.players
+
+    let new_players = players.filter(element =>{
+      return element.name.toLowerCase().includes(filterObject.players_name.toLowerCase()) &&
+             element.position.includes(filterObject.position)
+
+    })
+
+    console.log(new_players)
+
+    this.getAge("hola")
+
+
+    // this.props.actions.playersSearchFilter(filterObject,this.props.players)
+  }
+
+  getAge = dateOfBirth => {
+
+    console.log(dateOfBirth)
+
   }
 
 
   render() {
 
     const {players} = this.props
+
+    console.log(players)
     
     return (
       <MuiThemeProvider>

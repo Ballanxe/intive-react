@@ -1,6 +1,28 @@
 import defaultState from '../store/initialStates/player.js'
 
 
+function getAge(ageString){
+  let ageList = ageString.split("-")
+  let birthdate = new Date(ageList[0], ageList[1], ageList[2])
+  let now = new Date()
+  let age = now.getFullYear() - birthdate.getFullYear();
+
+  if (now.getMonth() >= birthdate.getMonth() && now.getDate() > birthdate.getDate()){
+    age--;
+  }
+
+  return age
+}
+
+function getPlayersAge(playersList){
+  playersList.forEach(function(element){
+    element.age = getAge(element.dateOfBirth)
+  })
+
+  return playersList
+}
+
+
 export function playersReducer(state=defaultState, action) {
   switch(action.type) {
     case "UPDATE_PLAYER_SEARCH":
@@ -27,7 +49,7 @@ export function playersReducer(state=defaultState, action) {
     case "PLAYERS_FETCH_DATA_SUCCESS":
       return {
         ...state,
-        players: action.players
+        players: getPlayersAge(action.players) 
       };
 
     default:
