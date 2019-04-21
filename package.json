@@ -36,6 +36,7 @@
     "recompose": "^0.30.0",
     "redux-promise-middleware": "^6.1.0",
     "redux-promise-middleware-actions": "^2.1.0",
+    "redux-thunk": "^2.3.0",
     "redux-thunk-promise": "^2.0.1",
     "whatwg-fetch": "^3.0.0"
   }
