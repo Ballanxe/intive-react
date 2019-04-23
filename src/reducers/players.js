@@ -1,4 +1,5 @@
 import defaultState from '../store/initialStates/player.js'
+import { createSelector } from 'reselect'
 
 
 function getAge(ageString){
@@ -55,11 +56,31 @@ export function playersReducer(state=defaultState, action) {
     case "PLAYERS_FETCH_DATA_SUCCESS":
       return {
         ...state,
-        all_players: getPlayersAge(action.players) 
+        all_players: action.players  
       };
 
     default:
      return state;
   }
 }
+
+const allPlayers = state => state.all_players
+const searchName = state => state.player_name
+const searchPosition = state => state.position
+const searchAge = state => state.number
+
+
+export const searchedPlayersSelector = createSelector(
+  [allPlayers, searchName, searchPosition, searchAge],
+  (players, name, position, age) => players.filter(
+    element =>{
+      return element.name.includes(name) ||
+             element.position.includes(position) ||
+             element.age.toString() === age
+    }
+
+  )
+
+)
+
 

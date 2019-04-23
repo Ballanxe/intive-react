@@ -3,7 +3,7 @@ export default {
   player_name: null,
   position: null,
   number:null,
-  all_players:null,
+  all_players:[],
   search_players: null,
   errors: {
     name: null,
