@@ -121,12 +121,4 @@ const mapStateToProps = state => ({
 
 })
 
-// export default withStyles(styles)(connect(mapStateToProps, () => ({}))(PlayersSearch));
 export default connect(mapStateToProps, () => ({}))(PlayersSearch);
-
-// export default compose(
-//     withStyles(styles, {
-//         name: 'PlayersSearch',
-//     }),
-//     connect(mapStateToProps,() => ({})),
-// )(PlayersSearch);
