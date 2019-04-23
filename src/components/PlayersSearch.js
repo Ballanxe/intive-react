@@ -48,7 +48,7 @@ class PlayersSearch extends React.Component{
 		this.props.onSubmitForm({
 			players_name:this.props.player_name,
 			position: this.props.position,
-			number: this.props.number
+			age: this.props.number
 		})
 	}
 

@@ -44,34 +44,25 @@ class App extends Component {
     console.log(filterObject)
     console.log(this.props.players)
 
-    let players = this.props.players
+    let players = this.props.all_players
 
     let new_players = players.filter(element =>{
-      return element.name.toLowerCase().includes(filterObject.players_name.toLowerCase()) &&
-             element.position.includes(filterObject.position)
 
+      return element.name.includes(filterObject.players_name) ||
+             element.position == filterObject.position ||
+             element.age.toString() === filterObject.age
     })
 
-    console.log(new_players)
-
-    this.getAge("hola")
-
-
-    // this.props.actions.playersSearchFilter(filterObject,this.props.players)
-  }
-
-  getAge = dateOfBirth => {
-
-    console.log(dateOfBirth)
-
+    this.props.actions.playersSearchFilter(new_players)
   }
 
 
   render() {
 
-    const {players} = this.props
+    const {all_players} = this.props
+    const {search_players} = this.props
 
-    console.log(players)
+    console.log(all_players)
     
     return (
       <MuiThemeProvider>
@@ -83,7 +74,7 @@ class App extends Component {
           onChangeField={this.updatePlayersSearch}
           onSubmitForm={this.searchFilter}
         />
-        <PlayersList players={players} />
+        <PlayersList players={search_players ? search_players : all_players} />
 
       </div>
       </MuiThemeProvider>

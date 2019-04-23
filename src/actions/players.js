@@ -49,12 +49,11 @@ export function playersFetchData(payload){
 	};
 }
 
-export function playersSearchFilter(searchResults){
-
+export function playersSearchFilter(players){
 
 	return {
-		type: 'UPDATE_PLAYER_SEARCH',
-		data:searchResults
+		type: 'SEARCH_PLAYERS',
+		players
 	}
 	
 }

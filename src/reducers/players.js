@@ -25,6 +25,12 @@ function getPlayersAge(playersList){
 
 export function playersReducer(state=defaultState, action) {
   switch(action.type) {
+    case 'SEARCH_PLAYERS':
+
+      return {
+        ...state,
+        search_players: action.players
+      };
     case "UPDATE_PLAYER_SEARCH":
 
       return {
@@ -49,7 +55,7 @@ export function playersReducer(state=defaultState, action) {
     case "PLAYERS_FETCH_DATA_SUCCESS":
       return {
         ...state,
-        players: getPlayersAge(action.players) 
+        all_players: getPlayersAge(action.players) 
       };
 
     default:
