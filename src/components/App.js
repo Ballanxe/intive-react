@@ -17,6 +17,7 @@ const mapStateToProps = (state) => {
 
   const new_players = searchedPlayersSelector(state.playersReducer) 
 
+  console.log(`This are new players ${new_players.length}`)
   return {
     ...state.playersReducer,
     search_players: new_players

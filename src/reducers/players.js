@@ -56,7 +56,7 @@ export function playersReducer(state=defaultState, action) {
     case "PLAYERS_FETCH_DATA_SUCCESS":
       return {
         ...state,
-        all_players: action.players  
+        all_players: getPlayersAge(action.players)  
       };
 
     default:
@@ -74,9 +74,9 @@ export const searchedPlayersSelector = createSelector(
   [allPlayers, searchName, searchPosition, searchAge],
   (players, name, position, age) => players.filter(
     element =>{
-      return element.name.includes(name) ||
-             element.position.includes(position) ||
-             element.age.toString() === age
+      return (element.name && element.name.includes(name)) ||
+             (element.position && element.position.includes(position)) ||
+             (element.age && element.age.toString() === age)
     }
 
   )
