@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { TextField, MenuItem, Grid, Button } from '@material-ui/core';
-// import MenuItem from '@material-ui/core/MenuItem';
-
-import * as playersAction  from '../actions/players';
 
 
 class PlayersSearch extends React.Component{
@@ -56,6 +52,7 @@ class PlayersSearch extends React.Component{
 
 		const {player_name} = this.state
 		const {position} = this.state
+		const {positions} = this.state
 		const {age} = this.state
 
 		console.log(player_name, position, age)
@@ -80,16 +77,17 @@ class PlayersSearch extends React.Component{
 					  id="outlined-select-position"
 					  select
 					  label="Position"
+					  InputLabelProps={{shrink:position ? true:false}}
 					  style={{
 					  	color:"#ffffff",
 					  	margin: 8
 					  }}
 					  fullWidth
-					  value={this.state.position}
+					  value={position}
 					  onChange={this.changePosition}
 					  variant="outlined"
 					>
-				  {this.state.positions.map(position => (
+				  {positions.map(position => (
 					    <MenuItem key={position} value={position}>
 					      {position}
 					    </MenuItem>
