@@ -32,11 +32,11 @@ export function playersReducer(state=defaultState, action) {
         ...state,
         search_players: action.players
       };
-    case "UPDATE_PLAYER_SEARCH":
+    case "UPDATE_PLAYERS_FILTER":
 
       return {
         ...state,
-        ...action.data,
+        ...action.searchPam,
       };
     case "PLAYERS_HAS_ERROED":
       return {
@@ -67,17 +67,19 @@ export function playersReducer(state=defaultState, action) {
 const allPlayers = state => state.all_players
 const searchName = state => state.player_name
 const searchPosition = state => state.position
-const searchAge = state => state.number
+const searchAge = state => state.age
 
 
 export const searchedPlayersSelector = createSelector(
   [allPlayers, searchName, searchPosition, searchAge],
-  (players, name, position, age) => players.filter(
-    element =>{
-      return (element.name && element.name.includes(name)) ||
-             (element.position && element.position.includes(position)) ||
-             (element.age && element.age.toString() === age)
-    }
+(players, name, position, age) =>
+
+    players.filter(
+        element =>{
+          return element.name.includes(name)||
+                 element.position.includes(position) ||
+                 element.age.toString() === age
+        }
 
   )
 

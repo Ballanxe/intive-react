@@ -15,16 +15,16 @@ import PlayersSearch from './PlayersSearch';
 
 const mapStateToProps = (state) => {
 
-  const new_players = searchedPlayersSelector(state.playersReducer) 
+  const new_players = searchedPlayersSelector(state.playersReducer)
 
-  console.log(`This are new players ${new_players.length}`)
+  console.log(`This are new players ${new_players}`)
+  console.log(state.playersReducer)
   return {
     ...state.playersReducer,
-    search_players: new_players
+    search_players: new_players ? new_players : []
   }
 
 }
-
 
 function mapDispatchToProps(dispatch) {
   return { 
@@ -45,14 +45,14 @@ class App extends Component {
   updatePlayersSearch = (newAttributes) => {
 
     this.props.actions.updatePlayersSearch(newAttributes);
-    console.log(this.props)
+    // console.log(this.props)
 
   }
 
-  // searchFilter = () => {
+  searchFilter = (searchPam) => {
 
-  //   this.props.actions.playersSearchFilter(new_players)
-  // }
+    this.props.actions.updatePlayersFilter(searchPam)
+  }
 
 
   render() {
@@ -60,7 +60,7 @@ class App extends Component {
     const {all_players} = this.props
     const {search_players} = this.props
 
-    console.log(all_players)
+    
     
     return (
       <MuiThemeProvider>

@@ -24,32 +24,41 @@ class PlayersSearch extends React.Component{
 			"Central Midfield",
 			"Right-Back",
 			"Forward",
-		]
+		],
+		player_name: null,
+		position: null,
+		age: null 
+
 	}
 
 	updateFieldEvent = key => ev => {
 
-		console.log({
-			[key]:ev.target.value
+		this.setState({
+			[key]:ev.target.value === "" ? null : ev.target.value
 		})
 
-		this.props.onChangeField({
-			[key]:ev.target.value
-		});
+		// this.props.onChangeField({
+		// 	[key]:ev.target.value === "" ? null : ev.target.value
+		// });
 	} 
 	changeName = this.updateFieldEvent('player_name')
 	changePosition = this.updateFieldEvent('position')
-	changeAge = this.updateFieldEvent('number')
+	changeAge = this.updateFieldEvent('age')
 	onSubmitForm = (e) => {
 		e.preventDefault()
 		this.props.onSubmitForm({
-			players_name:this.props.player_name == "" ? null : this.props.player_name,
-			position: this.props.position,
-			age: this.props.number == "" ? null : this.props.number
+				player_name: this.state.player_name,
+				position: this.state.position,
+				age: this.state.age
 		})
 	}
 	render(){
 
+		const {player_name} = this.state
+		const {position} = this.state
+		const {age} = this.state
+
+		console.log(player_name, position, age)
 		return(
 			<Grid container style={{ marginTop:20, marginBottom:20 }}>
 				<form noValidate autoComplete="off" style={{ width:100+'%' }}>
@@ -76,7 +85,7 @@ class PlayersSearch extends React.Component{
 					  	margin: 8
 					  }}
 					  fullWidth
-					  value={this.props.position}
+					  value={this.state.position}
 					  onChange={this.changePosition}
 					  variant="outlined"
 					>

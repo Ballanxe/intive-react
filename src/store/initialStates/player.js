@@ -2,9 +2,9 @@ export default {
 
   player_name: null,
   position: null,
-  number:null,
+  age:null,
   all_players:[],
-  search_players: null,
+  search_players: [],
   errors: {
     name: null,
     number:null,
