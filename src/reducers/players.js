@@ -24,16 +24,31 @@ function getPlayersAge(playersList){
 }
 
 
-export function playersReducer(state=defaultState, action) {
+export default function playersReducer(state=defaultState, action) {
   switch(action.type) {
     case 'SEARCH_PLAYERS':
+
+
 
       return {
         ...state,
         search_players: action.players
       };
+    case 'SEARCH_PLAYERS_VALIDATION_ERROR':
+
+      // console.log(action.errors)
+
+      return {
+        ...state,
+        errors:{
+          ...action.errors
+
+        }
+        
+      }
     case "UPDATE_PLAYERS_FILTER":
 
+      // console.log(action.searchPam)
       return {
         ...state,
         ...action.searchPam,

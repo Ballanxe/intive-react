@@ -57,3 +57,10 @@ export function updatePlayersFilter(searchPam){
 	}
 	
 }
+
+export function searchPlayersValidationError(errors) {
+  return {
+    type: "SEARCH_PLAYERS_VALIDATION_ERROR",
+    errors
+  }
+}

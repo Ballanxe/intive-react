@@ -6,13 +6,12 @@ export default {
   all_players:[],
   search_players: [],
   errors: {
-    name: null,
-    number:null,
-    submit: null, 
-    submit_error: null
+    playerName: null,
+    playerAge:null,
+    submitButton: true
   },
   loading: false,
-  hasErroed: false,
-  formInvalid: true
+  hasErroed: false
+  // formInvalid: true
 
 }

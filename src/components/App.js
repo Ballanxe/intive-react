@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as playersActions  from '../actions/players';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {searchedPlayersSelector} from '../reducers/players'
+import {searchedPlayersSelector} from '../reducers'
 
 import PlayersList from './PlayersList';
 import PlayersSearch from './PlayersSearch';
@@ -15,9 +15,8 @@ import PlayersSearch from './PlayersSearch';
 
 const mapStateToProps = (state) => {
 
-  const new_players = searchedPlayersSelector(state.playersReducer)
+  const new_players = searchedPlayersSelector(state)
 
-  console.log(`This are new players ${new_players}`)
   console.log(state.playersReducer)
   return {
     ...state.playersReducer,
@@ -52,6 +51,7 @@ class App extends Component {
   searchFilter = (searchPam) => {
 
     this.props.actions.updatePlayersFilter(searchPam)
+    console.log(searchPam)
   }
 
 
