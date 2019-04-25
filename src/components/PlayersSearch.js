@@ -50,22 +50,18 @@ class PlayersSearch extends React.Component{
 	}
 	render(){
 
-		const {player_name} = this.state
 		const {position} = this.state
 		const {positions} = this.state
-		const {age} = this.state
 		const {errors} = this.props
-
-		console.log(this.props)
 
 		return(
 			<Grid container style={{ marginTop:20, marginBottom:20 }}>
 				<form noValidate autoComplete="off" style={{ width:100+'%' }}>
 					<Grid item style={{ display:'flex', flexWrap:'nowrap', alignItems:"center"}}>
-					{ errors.player_name ? <p>Type just letters </p> : null }
 					<TextField
 					  id="outlined-full-width"
-					  label="Player name"
+					  label={errors.player_name ? "Invalid name" : "Players's name"}
+					  error = {errors.player_name}
 					  style={{ margin: 8 }}
 					  placeholder="Insert player name"
 					  fullWidth
@@ -96,10 +92,11 @@ class PlayersSearch extends React.Component{
 					    </MenuItem>
 					  ))}
 					</TextField>
-					{errors.age ? <p>Type just numbers</p> : null}
+					
 					<TextField
 					  id="outlined-full-width"
-					  label="Age"
+					  label={errors.age ? "Invalid age" : "Age"}
+					  error = {errors.age}
 					  style={{ margin: 8 }}
 					  placeholder="Insert player's age"
 					  fullWidth

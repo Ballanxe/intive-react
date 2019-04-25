@@ -9,3 +9,4 @@ export default combineReducers({
 });
 
 export const searchedPlayersSelector = (state) => playersSelectors.searchedPlayersSelector(state.playersReducer)
+

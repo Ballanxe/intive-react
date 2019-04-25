@@ -28,15 +28,11 @@ export default function playersReducer(state=defaultState, action) {
   switch(action.type) {
     case 'SEARCH_PLAYERS':
 
-
-
       return {
         ...state,
         search_players: action.players
       };
     case 'SEARCH_PLAYERS_VALIDATION_ERROR':
-
-      // console.log(action.errors)
 
       return {
         ...state,
@@ -52,6 +48,10 @@ export default function playersReducer(state=defaultState, action) {
       return {
         ...state,
         ...action.searchPam,
+        errors:{
+          playerName:null,
+          playerAge:null
+        }
       };
     case "PLAYERS_HAS_ERROED":
       return {
@@ -95,7 +95,6 @@ export const searchedPlayersSelector = createSelector(
                  element.position.includes(position) ||
                  element.age.toString() === age
         }
-
   )
 
 )

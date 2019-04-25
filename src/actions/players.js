@@ -1,4 +1,3 @@
-import agent from '../agent'
 
 
 export function playersHasErroed(bool, error){

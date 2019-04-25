@@ -8,20 +8,20 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 const PlayersList = props => {
-	if (!props.players){
+	if (!props.allPlayers){
 		return (
 			<div className="container">Loading...</div>
 		)
 	}
 
-	if (props.players.length === 0){
+	if (!props.searchPlayers){
 		return (
 			<div className="container">No players found</div>
 		)
 	}
 
 	return (
-		<>
+
 		<Paper >
 		  <Table >
 		    <TableHead>
@@ -33,7 +33,7 @@ const PlayersList = props => {
 		      </TableRow>
 		    </TableHead>
 		    <TableBody>
-		      {Array.prototype.map.call(props.players, (player, i)=>(
+		      { props.searchPlayers ? Array.prototype.map.call(props.searchPlayers, (player, i)=>(
 		      	<TableRow >
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
@@ -42,13 +42,20 @@ const PlayersList = props => {
 		      	  <TableCell align="right">{player.nationality}</TableCell>
 		      	  <TableCell align="right">{player.age}</TableCell>
 		      	</TableRow>
-		      )
-
-		      )}
+		      )) : Array.prototype.map.call(props.allPlayers, (player, i)=>(
+		      	<TableRow >
+		      	  <TableCell component="th" scope="row">
+		      	    {player.name}
+		      	  </TableCell>
+		      	  <TableCell align="right">{player.position}</TableCell>
+		      	  <TableCell align="right">{player.nationality}</TableCell>
+		      	  <TableCell align="right">{player.age}</TableCell>
+		      	</TableRow>
+		      ))}
 		    </TableBody>
 		  </Table>
 		</Paper>
-		</>
+
 	)
 }
 
