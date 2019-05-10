@@ -70,7 +70,6 @@ class App extends Component {
         <PlayersList 
           allPlayers={all_players}
           searchPlayers={search_players.length === 0 ? null : search_players} />
-
       </div>
       </MuiThemeProvider>
     );

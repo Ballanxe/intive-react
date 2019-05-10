@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 const PlayersList = props => {
+	
 	if (!props.allPlayers){
 		return (
 			<div className="container">Loading...</div>
@@ -33,7 +34,7 @@ const PlayersList = props => {
 		      </TableRow>
 		    </TableHead>
 		    <TableBody>
-		      { props.searchPlayers ? Array.prototype.map.call(props.searchPlayers, (player, i)=>(
+		      { props.searchPlayers ? props.searchPlayers.map((player, i)=>(
 		      	<TableRow >
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
