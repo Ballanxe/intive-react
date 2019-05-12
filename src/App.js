@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
       <React.Fragment>
-        <AppBar title="React Players" />
+        <AppBar title="React Players" className="app-bar"/>
       </React.Fragment>
       <div className="container">
         <PlayersSearch
