@@ -11,6 +11,5 @@ export default {
   },
   loading: false,
   hasErroed: false
-  // formInvalid: true
 
 }

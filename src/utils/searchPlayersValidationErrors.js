@@ -7,9 +7,6 @@ export default function searchPlayersValidationErrors(searchParameters) {
 
 
     errors[validator] = !attributeValidators[validator](searchParameters)
- 
-
-    // console.log(errors)
 
     return errors;
 

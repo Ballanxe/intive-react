@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import '../App.css';
-import agent from '../agent';
+import './App.css';
+import agent from './agent';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as playersActions  from '../actions/players';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {searchedPlayersSelector} from '../reducers'
 
-import PlayersList from './PlayersList';
-import PlayersSearch from './PlayersSearch';
+import * as playersActions  from './players/actions';
+import { searchedPlayersSelector } from './players/selectors';
+
+import PlayersList from './players/components/PlayersList';
+import PlayersSearch from './players/components/PlayersSearch';
 
 
 
 const mapStateToProps = (state) => {
 
-  const new_players = searchedPlayersSelector(state)
+  const new_players = searchedPlayersSelector(state.playersReducer)
 
   return {
     ...state.playersReducer,
@@ -56,6 +57,8 @@ class App extends Component {
 
     const {all_players} = this.props
     const {search_players} = this.props
+
+    console.log(this.props)
     
     return (
       <MuiThemeProvider>

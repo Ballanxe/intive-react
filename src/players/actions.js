@@ -1,8 +1,10 @@
+import * as t from './actionTypes';
 
 
-export function playersHasErroed(bool, error){
+
+export function fetchHasErroed(bool, error){
 	return {
-		type: 'PLAYERS_HAS_ERROED',
+		type: t.FETCH_HAS_ERROED,
 		hasErroed: bool,
 		error
 	}
@@ -10,14 +12,14 @@ export function playersHasErroed(bool, error){
 
 export function playersAreLoading(bool){
 	return {
-		type: 'PLAYERS_ARE_LOADING',
+		type: t.ARE_LOADING,
 		loading: bool
 	}
 }
 
 export function playersFetchDataSuccess(players){
 	return {
-		type: 'PLAYERS_FETCH_DATA_SUCCESS',
+		type: t.FETCH_DATA_SUCCESS,
 		players 
 	};
 }
@@ -25,7 +27,7 @@ export function playersFetchDataSuccess(players){
 export function updatePlayersSearch(searchParameters){
 
 	return {
-	  type: "UPDATE_PLAYER_SEARCH",
+	  type: t.UPDATE_SEARCH,
 	  data: searchParameters
 	}
 }
@@ -41,7 +43,7 @@ export function playersFetchData(payload){
 				dispatch(playersAreLoading(false));
 			},
 			error =>{
-				dispatch(playersHasErroed(true, error.response.body))
+				dispatch(fetchHasErroed(true, error.response.body))
 			}
 		)			
 
@@ -51,7 +53,7 @@ export function playersFetchData(payload){
 export function updatePlayersFilter(searchPam){
 
 	return {
-		type: 'UPDATE_PLAYERS_FILTER',
+		type: t.UPDATE_FILTER,
 		searchPam
 	}
 	
@@ -59,7 +61,7 @@ export function updatePlayersFilter(searchPam){
 
 export function searchPlayersValidationError(errors) {
   return {
-    type: "SEARCH_PLAYERS_VALIDATION_ERROR",
+    type: t.SEARCH_VALIDATION_ERROR,
     errors
   }
 }

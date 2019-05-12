@@ -1,9 +1,11 @@
-import { searchPlayersValidationError } from '../actions/players';
-import searchPlayersValidationErrors    from '../utils/searchPlayersValidationErrors';
-import searchPlayerIsValid             from '../utils/searchPlayerIsValid';
+import * as t from '../players/actionTypes';
+import { searchPlayersValidationError } from '../players/actions';
+import searchPlayersValidationErrors from '../utils/searchPlayersValidationErrors';
+import searchPlayerIsValid  from '../utils/searchPlayerIsValid';
+
 
 const formValidationMiddleware = ({ dispatch, getState}) => next => action => {
-  if (action.type !== "UPDATE_PLAYERS_FILTER") {
+  if (action.type !== t.UPDATE_FILTER) {
     return next(action)
   }
   const { searchPam } = action; 

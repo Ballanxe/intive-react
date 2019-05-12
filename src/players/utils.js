@@ -1,5 +1,4 @@
-
-export const getAge = (ageString)=> {
+export const getAge = function(ageString){
   let ageList = ageString.split("-")
   let birthdate = new Date(ageList[0], ageList[1], ageList[2])
   let now = new Date()
@@ -10,4 +9,12 @@ export const getAge = (ageString)=> {
   }
 
   return age
+}
+
+export const getPlayersAge = function(playersList){
+  playersList.forEach(function(element){
+    element.age = getAge(element.dateOfBirth)
+  })
+
+  return playersList
 }
