@@ -7,12 +7,26 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing.unit * 2,
+    size:100,
+    
+  },
+});
 
 const PlayersList = props => {
+
+	const { classes } = props;
 	
 	if (!props.allPlayers){
 		return (
-			<div className="container" data-test="no-all-players">Loading...</div>
+			<div className="container" data-test="no-all-players">
+				<CircularProgress className={classes.progress} />
+			</div>
 		)
 	}
 
@@ -88,6 +102,5 @@ const PlayersList = props => {
 // 	),
 // }
 
+export default withStyles(styles)(PlayersList);
 
-
-export default PlayersList

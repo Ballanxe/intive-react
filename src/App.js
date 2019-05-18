@@ -63,7 +63,7 @@ class App extends Component {
           onSubmitForm={this.searchFilter}
         />
         <PlayersList 
-          allPlayers={all_players}
+          allPlayers={all_players.length === 0 ? null : all_players}
           searchPlayers={search_players.length === 0 ? null : search_players} />
       </div>
       </MuiThemeProvider>
