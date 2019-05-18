@@ -14,7 +14,7 @@ const styles = theme => ({
   progress: {
     margin: theme.spacing.unit * 2,
     size:100,
-    
+
   },
 });
 
@@ -24,7 +24,7 @@ const PlayersList = props => {
 	
 	if (!props.allPlayers){
 		return (
-			<div className="container" data-test="no-all-players">
+			<div className="container text-center" data-test="no-all-players">
 				<CircularProgress className={classes.progress} />
 			</div>
 		)
@@ -32,7 +32,7 @@ const PlayersList = props => {
 
 	if (!props.searchPlayers){
 		return (
-			<div className="container" data-test="no-search-players">No players found</div>
+			<div className="container text-center" data-test="no-search-players">No players found</div>
 		)
 	}
 
