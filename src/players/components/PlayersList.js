@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,19 +12,19 @@ const PlayersList = props => {
 	
 	if (!props.allPlayers){
 		return (
-			<div className="container">Loading...</div>
+			<div className="container" data-test="no-all-players">Loading...</div>
 		)
 	}
 
 	if (!props.searchPlayers){
 		return (
-			<div className="container">No players found</div>
+			<div className="container" data-test="no-search-players">No players found</div>
 		)
 	}
 
 	return (
 
-		<Paper >
+		<Paper data-test="players-fetched">
 		  <Table >
 		    <TableHead>
 		      <TableRow>
@@ -59,5 +60,34 @@ const PlayersList = props => {
 
 	)
 }
+
+// PlayersList.propTypes = {
+// 	allPlayers: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 			contractUntil: PropTypes.string.isRequired,
+// 			dateOfBirth: PropTypes.string.isRequired,
+// 			jerseyNumber: PropTypes.number.isRequired,
+// 			name: PropTypes.string.isRequired,
+// 			nationality: PropTypes.string.isRequired,
+// 			position: PropTypes.string.isRequired,
+// 			age: PropTypes.number.isRequired
+
+// 		})
+// 	),
+// 	searchPlayers: PropTypes.arrayOf(
+// 		PropTypes.shape({
+// 			contractUntil: PropTypes.string.isRequired,
+// 			dateOfBirth: PropTypes.string.isRequired,
+// 			jerseyNumber: PropTypes.number.isRequired,
+// 			name: PropTypes.string.isRequired,
+// 			nationality: PropTypes.string.isRequired,
+// 			position: PropTypes.string.isRequired,
+// 			age: PropTypes.number.isRequired
+
+// 		})
+// 	),
+// }
+
+
 
 export default PlayersList

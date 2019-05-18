@@ -21,21 +21,17 @@ class PlayersSearch extends React.Component{
 			"Right-Back",
 			"Forward",
 		],
-		player_name: null,
-		position: null,
-		age: null 
+		player_name: '',
+		position: '',
+		age: '' 
 
 	}
 
 	updateFieldEvent = key => ev => {
 
 		this.setState({
-			[key]:ev.target.value === "" ? null : ev.target.value
+			[key]:ev.target.value === '' ? '' : ev.target.value
 		})
-
-		// this.props.onChangeField({
-		// 	[key]:ev.target.value === "" ? null : ev.target.value
-		// });
 	} 
 	changeName = this.updateFieldEvent('player_name')
 	changePosition = this.updateFieldEvent('position')
@@ -43,9 +39,9 @@ class PlayersSearch extends React.Component{
 	onSubmitForm = (e) => {
 		e.preventDefault()
 		this.props.onSubmitForm({
-				player_name: this.state.player_name,
-				position: this.state.position,
-				age: this.state.age
+			player_name: this.state.player_name,
+			position: this.state.position,
+			age: this.state.age
 		})
 	}
 	render(){
@@ -117,6 +113,7 @@ class PlayersSearch extends React.Component{
 					</Button>
 					</Grid>
 				</form>
+
 			</Grid>
 			
 		)

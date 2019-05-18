@@ -9,12 +9,13 @@ const searchAge = state => state.age
 export const searchedPlayersSelector = createSelector(
   [allPlayers, searchName, searchPosition, searchAge],
 (players, name, position, age) =>
-
+	
     players.filter(
         element =>{
-          return element.name.includes(name)||
-                 element.position.includes(position) ||
-                 element.age.toString() === age
+
+          return element.name.toLowerCase().includes(name.toLowerCase()) &&
+                 element.position.includes(position) &&
+                 element.age.toString().includes(age.toString())
         }
   )
 

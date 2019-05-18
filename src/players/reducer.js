@@ -32,7 +32,6 @@ export default function playersReducer(state=defaultState, action) {
         errors: {
           ...state.errors,
           submit_error: action.error,
-          submit: true
         }
       };
     case t.ARE_LOADING:

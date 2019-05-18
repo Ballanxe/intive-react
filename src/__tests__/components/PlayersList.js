@@ -1,21 +1,60 @@
 import React from 'react';
-import { shallow, render } from  'enzyme';
-import configureStore from 'redux-mock-store';
-import { PlayersList } from '../../components/PlayersList';
+import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 
-const mockStore = configureStore()
+import { findByTestAttr, storeFactory } from '../../utils/testUtils';
+import PlayersList from '../../players/components/PlayersList';
 
-it('Render PlayersList', () => {
 
-	const store = mockStore({players: []})
 
-	const wrapper = shallow(<PlayersList players=[{}]>);
+const setup = (props={}) => {
 
-	console.log("Hola como estan")
+	const wrapper = shallow(<PlayersList {...props}/>)
 
-	// const wrapper = render(<ConnectedProductList store={store}>)
+	// console.log(wrapper.debug());
+	return wrapper
+}
 
-	// expect(wrapper.find(".products").length).toBe(0);
 
-});
+test('renders without players', () => {
 
+	const defaultProps = { allPlayers:null, searchPlayers:null };
+	const wrapper = setup(defaultProps);
+	const component = findByTestAttr(wrapper,"no-all-players")
+	expect(component.length).toBe(1)
+})
+
+test('renders with all players and without search players', () => {
+
+	const defaultProps = { allPlayers:[], searchPlayers:null };
+	const wrapper = setup(defaultProps);
+	const component = findByTestAttr(wrapper,"no-search-players")
+	expect(component.length).toBe(1)
+})
+
+test('renders with search players and with all players', () => {
+
+	const players = [{
+		contractUntil : "2022-06-30",
+		dateOfBirth : "1993-05-13",
+		jerseyNumber : 9,
+		name : "Romelu Lukaku",
+		nationality : "Belgium",
+		position : "Centre-Forward"
+	}]
+
+	const searchedPlayers = [{
+		contractUntil : "2019-06-30",
+		dateOfBirth : "1990-11-07",
+		jerseyNumber : 1,
+		name : "David de Gea",
+		nationality : "Spain",
+		position: "Keeper"
+	}]
+
+	const defaultProps = { allPlayers: players, searchPlayers: players}
+	const wrapper = setup(defaultProps)
+	const component = findByTestAttr(wrapper, 'players-fetched')
+	expect(component.length).toBe(1)
+
+})

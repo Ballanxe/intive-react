@@ -24,14 +24,6 @@ export function playersFetchDataSuccess(players){
 	};
 }
 
-export function updatePlayersSearch(searchParameters){
-
-	return {
-	  type: t.UPDATE_SEARCH,
-	  data: searchParameters
-	}
-}
-
 export function playersFetchData(payload){
 
 	return (dispatch) => {

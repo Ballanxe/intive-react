@@ -40,12 +40,6 @@ class App extends Component {
 
   }
 
-  updatePlayersSearch = (newAttributes) => {
-
-    this.props.actions.updatePlayersSearch(newAttributes);
-
-  }
-
   searchFilter = (searchPam) => {
 
     this.props.actions.updatePlayersFilter(searchPam)
@@ -57,11 +51,9 @@ class App extends Component {
 
     const {all_players} = this.props
     const {search_players} = this.props
-
-    console.log(this.props)
     
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider data-test="main-component">
       <React.Fragment>
         <AppBar title="React Players" className="app-bar"/>
       </React.Fragment>
