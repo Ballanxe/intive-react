@@ -50,7 +50,7 @@ const PlayersList = props => {
 		    </TableHead>
 		    <TableBody>
 		      { props.searchPlayers ? props.searchPlayers.map((player, i)=>(
-		      	<TableRow >
+		      	<TableRow key={i}>
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
 		      	  </TableCell>
@@ -59,7 +59,7 @@ const PlayersList = props => {
 		      	  <TableCell align="right">{player.age}</TableCell>
 		      	</TableRow>
 		      )) : Array.prototype.map.call(props.allPlayers, (player, i)=>(
-		      	<TableRow >
+		      	<TableRow key={i}>
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
 		      	  </TableCell>

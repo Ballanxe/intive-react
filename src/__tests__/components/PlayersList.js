@@ -9,7 +9,7 @@ import PlayersList from '../../players/components/PlayersList';
 
 const setup = (props={}) => {
 
-	const wrapper = shallow(<PlayersList {...props}/>)
+	const wrapper = shallow(<PlayersList {...props}/>).dive()
 
 	// console.log(wrapper.debug());
 	return wrapper
@@ -18,7 +18,7 @@ const setup = (props={}) => {
 
 test('renders without players', () => {
 
-	const defaultProps = { allPlayers:null, searchPlayers:null };
+	const defaultProps = { allPlayers:null, searchPlayers:null, classes:{} };
 	const wrapper = setup(defaultProps);
 	const component = findByTestAttr(wrapper,"no-all-players")
 	expect(component.length).toBe(1)
@@ -26,7 +26,7 @@ test('renders without players', () => {
 
 test('renders with all players and without search players', () => {
 
-	const defaultProps = { allPlayers:[], searchPlayers:null };
+	const defaultProps = { allPlayers:[], searchPlayers:null, classes:{} };
 	const wrapper = setup(defaultProps);
 	const component = findByTestAttr(wrapper,"no-search-players")
 	expect(component.length).toBe(1)
@@ -52,7 +52,7 @@ test('renders with search players and with all players', () => {
 		position: "Keeper"
 	}]
 
-	const defaultProps = { allPlayers: players, searchPlayers: players}
+	const defaultProps = { allPlayers: players, searchPlayers: players, classes:{} }
 	const wrapper = setup(defaultProps)
 	const component = findByTestAttr(wrapper, 'players-fetched')
 	expect(component.length).toBe(1)

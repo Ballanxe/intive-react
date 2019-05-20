@@ -16,10 +16,10 @@ import PlayersSearch from './players/components/PlayersSearch';
 
 const mapStateToProps = (state) => {
 
-  const new_players = searchedPlayersSelector(state.playersReducer)
+  const new_players = searchedPlayersSelector(state.players)
 
   return {
-    ...state.playersReducer,
+    ...state.players,
     search_players: new_players
   }
 
@@ -53,19 +53,19 @@ class App extends Component {
     const {search_players} = this.props
     
     return (
-      <MuiThemeProvider data-test="main-component">
-      <React.Fragment>
-        <AppBar title="React Players" className="app-bar"/>
-      </React.Fragment>
-      <div className="container">
-        <PlayersSearch
-          onChangeField={this.updatePlayersSearch}
-          onSubmitForm={this.searchFilter}
-        />
-        <PlayersList 
-          allPlayers={all_players.length === 0 ? null : all_players}
-          searchPlayers={search_players.length === 0 ? null : search_players} />
-      </div>
+      <MuiThemeProvider data-test="main-component" >
+        <React.Fragment>
+          <AppBar title="React Players" className="app-bar" data-test="app-bar"/>
+          <div className="container" data-test="players-container">
+            <PlayersSearch
+              onChangeField={this.updatePlayersSearch}
+              onSubmitForm={this.searchFilter}
+            />
+            <PlayersList 
+              allPlayers={all_players.length === 0 ? null : all_players}
+              searchPlayers={search_players.length === 0 ? null : search_players} />
+          </div>
+        </React.Fragment>
       </MuiThemeProvider>
     );
   }

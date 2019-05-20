@@ -14,7 +14,6 @@ export default function playersReducer(state=defaultState, action) {
           ...action.errors
 
         }
-        
       }
     case t.UPDATE_FILTER:
 

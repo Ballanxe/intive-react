@@ -28,6 +28,16 @@ export const storeFactory = (initialState) => {
 	); 
 }
 
+// export const middlewares = [thunk,formValidationMiddleware];
+
+// export const storeFactory = (initialState) => {
+// 	return createStore(
+// 		rootReducer,
+// 		initialState,
+// 		applyMiddleware(...middlewares)
+// 	);
+// }
+
 /**
 	 * Return node (s) with the given data-test attribute.
 	 * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper.

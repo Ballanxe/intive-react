@@ -4,6 +4,6 @@ import players from './players';
 
 export default combineReducers({
 
-  playersReducer: players.reducer,
+  players: players.reducer,
 
 });
