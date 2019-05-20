@@ -28,7 +28,6 @@ export function playersFetchData(payload){
 
 	return (dispatch) => {
 		dispatch(playersAreLoading(true));
-
 		payload.then(
 			res =>{
 				dispatch(playersFetchDataSuccess(res))
@@ -38,7 +37,6 @@ export function playersFetchData(payload){
 				dispatch(fetchHasErroed(true, error.response.body))
 			}
 		)			
-
 	};
 }
 
@@ -48,7 +46,6 @@ export function updatePlayersFilter(searchPam){
 		type: t.UPDATE_FILTER,
 		searchPam
 	}
-	
 }
 
 export function searchPlayersValidationError(errors) {

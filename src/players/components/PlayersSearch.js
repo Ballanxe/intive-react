@@ -122,7 +122,7 @@ class PlayersSearch extends React.Component{
 }
 
 const mapStateToProps = state => ({
-	...state.playersReducer,
+	...state.players,
 
 })
 
