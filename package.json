@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "axios": "^0.18.0",
     "check-prop-types": "^1.1.2",
     "enzyme-adapter-react-16": "^1.13.0",
     "jest-enzyme": "^7.0.2",
+    "moxios": "^0.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -37,7 +39,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
-      "!<rootDir>/public" 
+      "!<rootDir>/public"
     ]
   },
   "devDependencies": {
@@ -52,6 +54,7 @@
     "redux-thunk": "^2.3.0",
     "redux-thunk-promise": "^2.0.1",
     "reselect": "^4.0.0",
+    "superagent-mock": "^3.7.0",
     "whatwg-fetch": "^3.0.0"
   }
 }

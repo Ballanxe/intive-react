@@ -39,7 +39,7 @@ test('return state of true upon receiving an action of FETCH_HAS_ERROED', () => 
 		  submit_error: 'test error',
 		},
 		loading: false,
-		hasErroed: false
+		hasErroed: true
 	}
 	expect(newState).toEqual(expectedState)
 })

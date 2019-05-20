@@ -1,6 +1,6 @@
 import checkPropTypes from 'check-prop-types';
 import { createStore, applyMiddleware } from 'redux';
-
+import thunk from 'redux-thunk';
 import rootReducer from '../rootReducer';
 import { middlewares } from '../store/configureStore';
 
@@ -20,23 +20,23 @@ import playersReducer from '../players/reducer'
 // This is recommended if you want to test intermediate actions as loading while wating
 // a response 
 // const playersReducer = players.reducer
-export const storeFactory = (initialState) => {
-	const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
-	return createStoreWithMiddleware(
-		rootReducer, 
-		initialState
-	); 
-}
+// export const storeFactory = (initialState) => {
+// 	const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+// 	return createStoreWithMiddleware(
+// 		rootReducer, 
+// 		initialState
+// 	); 
+// }
 
 // export const middlewares = [thunk,formValidationMiddleware];
 
-// export const storeFactory = (initialState) => {
-// 	return createStore(
-// 		rootReducer,
-// 		initialState,
-// 		applyMiddleware(...middlewares)
-// 	);
-// }
+export const storeFactory = (initialState) => {
+	return createStore(
+		rootReducer,
+		initialState,
+		applyMiddleware(...middlewares)
+	);
+}
 
 /**
 	 * Return node (s) with the given data-test attribute.

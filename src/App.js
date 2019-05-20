@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import agent from './agent';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AppBar from 'material-ui/AppBar';
@@ -36,7 +35,7 @@ class App extends Component {
 
   componentDidMount(){
 
-    this.props.actions.playersFetchData(agent.Players.all())
+    this.props.actions.playersFetchData()
 
   }
 

@@ -1,4 +1,5 @@
 import * as t from './actionTypes';
+import axios from 'axios';
 
 
 
@@ -24,20 +25,20 @@ export function playersFetchDataSuccess(players){
 	};
 }
 
-export function playersFetchData(payload){
+export function playersFetchData(){
 
 	return (dispatch) => {
-		dispatch(playersAreLoading(true));
-		payload.then(
-			res =>{
-				dispatch(playersFetchDataSuccess(res))
+		dispatch(playersAreLoading(true))
+		return axios.get('https://football-players-b31f2.firebaseio.com/players.json?print=pretty')
+			.then(res => {
+				dispatch(playersFetchDataSuccess(res.data))
 				dispatch(playersAreLoading(false));
-			},
-			error =>{
-				dispatch(fetchHasErroed(true, error.response.body))
-			}
-		)			
-	};
+			})
+			.catch(error => {
+				dispatch(fetchHasErroed(true, error.response.data.error))
+			})
+	}
+
 }
 
 export function updatePlayersFilter(searchPam){
