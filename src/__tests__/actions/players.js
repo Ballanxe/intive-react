@@ -23,7 +23,7 @@ describe('playersFetchData', () => {
 		moxios.uninstall();
 	})
 
-	test('should fetch players successfuly ', () => {
+	test('should fetch players successfully ', () => {
 
 		const expectedResponse = [{
 					age: 26,
@@ -77,5 +77,34 @@ describe('playersFetchData', () => {
 		})
 	})
 
+
+})
+
+describe('testing players search actions', () => {
+
+	test('should return action with type `UPDATE FILTER`', () => {
+		const searchPam = {
+			player_name: 'test name',
+			position: 'test position',
+			age: 23
+		}
+		const expectedAction = {
+			type: t.UPDATE_FILTER,
+			searchPam
+		}
+		const action = a.updatePlayersFilter(searchPam)
+		expect(action).toEqual(expectedAction)
+
+
+	})
+	test('should return action with type `SEARCH_VALIDATION_ERROR`', () => {
+		const testErrors = {player_name: false, age:true}
+		const action = a.searchPlayersValidationError(testErrors)
+		const expectedAction = {
+			type: t.SEARCH_VALIDATION_ERROR,
+			errors: testErrors
+		}
+		expect(action).toEqual(expectedAction)
+	})
 
 })
