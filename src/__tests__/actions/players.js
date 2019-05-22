@@ -1,7 +1,5 @@
 import moxios from 'moxios';
 import axios from 'axios';
-import configureStore from 'redux-mock-store';
-import { middlewares } from '../../store/configureStore';
 
 import * as a from '../../players/actions'
 import * as t from '../../players/actionTypes';

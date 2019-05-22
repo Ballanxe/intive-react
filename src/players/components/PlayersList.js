@@ -38,11 +38,11 @@ const PlayersList = props => {
 
 	return (
 
-		<Paper data-test="players-fetched">
+		<Paper data-test="players-fetched" className="players-list-wrapper">
 		  <Table >
 		    <TableHead>
 		      <TableRow>
-		        <TableCell>Player</TableCell>
+		        <TableCell >Player</TableCell>
 		        <TableCell >Position</TableCell>
 		        <TableCell >Team</TableCell>
 		        <TableCell >Age</TableCell>
@@ -54,18 +54,18 @@ const PlayersList = props => {
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
 		      	  </TableCell>
-		      	  <TableCell align="right">{player.position}</TableCell>
-		      	  <TableCell align="right">{player.nationality}</TableCell>
-		      	  <TableCell align="right">{player.age}</TableCell>
+		      	  <TableCell >{player.position}</TableCell>
+		      	  <TableCell >{player.nationality}</TableCell>
+		      	  <TableCell >{player.age}</TableCell>
 		      	</TableRow>
 		      )) : Array.prototype.map.call(props.allPlayers, (player, i)=>(
 		      	<TableRow key={i}>
 		      	  <TableCell component="th" scope="row">
 		      	    {player.name}
 		      	  </TableCell>
-		      	  <TableCell align="right">{player.position}</TableCell>
-		      	  <TableCell align="right">{player.nationality}</TableCell>
-		      	  <TableCell align="right">{player.age}</TableCell>
+		      	  <TableCell >{player.position}</TableCell>
+		      	  <TableCell >{player.nationality}</TableCell>
+		      	  <TableCell >{player.age}</TableCell>
 		      	</TableRow>
 		      ))}
 		    </TableBody>
@@ -75,32 +75,6 @@ const PlayersList = props => {
 	)
 }
 
-// PlayersList.propTypes = {
-// 	allPlayers: PropTypes.arrayOf(
-// 			PropTypes.shape({
-// 			contractUntil: PropTypes.string.isRequired,
-// 			dateOfBirth: PropTypes.string.isRequired,
-// 			jerseyNumber: PropTypes.number.isRequired,
-// 			name: PropTypes.string.isRequired,
-// 			nationality: PropTypes.string.isRequired,
-// 			position: PropTypes.string.isRequired,
-// 			age: PropTypes.number.isRequired
-
-// 		})
-// 	),
-// 	searchPlayers: PropTypes.arrayOf(
-// 		PropTypes.shape({
-// 			contractUntil: PropTypes.string.isRequired,
-// 			dateOfBirth: PropTypes.string.isRequired,
-// 			jerseyNumber: PropTypes.number.isRequired,
-// 			name: PropTypes.string.isRequired,
-// 			nationality: PropTypes.string.isRequired,
-// 			position: PropTypes.string.isRequired,
-// 			age: PropTypes.number.isRequired
-
-// 		})
-// 	),
-// }
 
 export default withStyles(styles)(PlayersList);
 

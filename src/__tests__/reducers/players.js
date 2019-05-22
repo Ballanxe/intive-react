@@ -13,8 +13,8 @@ test('returns default initial state of `false` when no action is passed', () =>{
 		all_players:[],
 		search_players: [],
 		errors: {
-		  player_name: '',
-		  age:'',
+		  player_name: false,
+		  age:false,
 		},
 		loading: false,
 		hasErroed: false
@@ -34,8 +34,8 @@ test('return state of true upon receiving an action of FETCH_HAS_ERROED', () => 
 		all_players:[],
 		search_players: [],
 		errors: {
-		  player_name: '',
-		  age:'',
+		  player_name: false,
+		  age:false,
 		  submit_error: 'test error',
 		},
 		loading: false,
@@ -59,8 +59,8 @@ test('return state of true upon receiving an action of FETCH_DATA_SUCCESS', () =
 		}],
 		search_players: [],
 		errors: {
-		  player_name: '',
-		  age:'',
+		  player_name: false,
+		  age:false,
 		},
 		loading: false,
 		hasErroed: false
@@ -78,8 +78,8 @@ test('return state of true upon receiving an action of ARE_LOADING', () => {
 		all_players:[],
 		search_players: [],
 		errors: {
-		  player_name: '',
-		  age:'',
+		  player_name: false,
+		  age:false,
 		},
 		loading: true,
 		hasErroed: false
@@ -105,8 +105,8 @@ test('return state of true upon receiving an action of UPDATE_FILTER', () => {
 		all_players:[],
 		search_players: [],
 		errors: {
-		  playerName: null,
-		  playerAge: null,
+		  age: false,
+		  player_name: false,
 		},
 		loading: false,
 		hasErroed: false

@@ -39,7 +39,7 @@ class PlayersSearch extends React.Component{
 	onSubmitForm = (e) => {
 		e.preventDefault()
 		this.props.onSubmitForm({
-			player_name: this.state.player_name,
+			player_name: this.state.player_name.trim(),
 			position: this.state.position,
 			age: this.state.age
 		})
@@ -53,7 +53,7 @@ class PlayersSearch extends React.Component{
 		return(
 			<Grid container style={{ marginTop:20, marginBottom:20 }}>
 				<form noValidate autoComplete="off" style={{ width:100+'%' }}>
-					<Grid item style={{ display:'flex', flexWrap:'nowrap', alignItems:"center"}}>
+					<Grid item className="inputs-wrapper" style={{ display:'flex', flexWrap:'nowrap', alignItems:"center"}} >
 					<TextField
 					  id="outlined-full-width"
 					  label={errors.player_name ? "Invalid name" : "Players's name"}

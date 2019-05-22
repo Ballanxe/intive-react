@@ -21,9 +21,9 @@ export default function playersReducer(state=defaultState, action) {
       return {
         ...state,
         ...action.searchPam,
-        errors:{
-          playerName:null,
-          playerAge:null
+        errors: {
+          player_name: false,
+          age:false,
         }
       };
     case t.FETCH_HAS_ERROED:

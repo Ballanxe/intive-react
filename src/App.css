@@ -44,3 +44,14 @@
 body{
   background: #FAFBFC;
 }
+
+@media only screen and (min-width: 300px) and (max-width: 800px) {
+  .inputs-wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .players-list-wrapper{
+    overflow-x:scroll;
+  }
+}
