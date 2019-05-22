@@ -31,20 +31,12 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class App extends Component {
+export class UnconnectedApp extends Component {
 
   componentDidMount(){
-
     this.props.actions.playersFetchData()
 
   }
-
-  searchFilter = (searchPam) => {
-
-    this.props.actions.updatePlayersFilter(searchPam)
-
-  }
-
 
   render() {
 
@@ -56,10 +48,7 @@ class App extends Component {
         <React.Fragment>
           <AppBar title="React Players" className="app-bar" data-test="app-bar"/>
           <div className="container" data-test="players-container">
-            <PlayersSearch
-              onChangeField={this.updatePlayersSearch}
-              onSubmitForm={this.searchFilter}
-            />
+            <PlayersSearch/>
             <PlayersList 
               allPlayers={all_players.length === 0 ? null : all_players}
               searchPlayers={search_players.length === 0 ? null : search_players} />
@@ -71,4 +60,4 @@ class App extends Component {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedApp);

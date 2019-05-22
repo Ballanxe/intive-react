@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export function fetchHasErroed(bool, error){
+function fetchHasErroed(bool, error){
 	return {
 		type: t.FETCH_HAS_ERROED,
 		hasErroed: bool,
@@ -11,14 +11,14 @@ export function fetchHasErroed(bool, error){
 	}
 }
 
-export function playersAreLoading(bool){
+function playersAreLoading(bool){
 	return {
 		type: t.ARE_LOADING,
 		loading: bool
 	}
 }
 
-export function playersFetchDataSuccess(players){
+function playersFetchDataSuccess(players){
 	return {
 		type: t.FETCH_DATA_SUCCESS,
 		players 

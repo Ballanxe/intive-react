@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow, mount, render } from 'enzyme';
 
 import { findByTestAttr, storeFactory } from '../../utils/testUtils';
-import App from '../../App';
+import App, { UnconnectedApp } from '../../App';
 
 
 /**
@@ -12,9 +12,9 @@ import App from '../../App';
 * @param {object} initialState - Initial state for this setup
 * @returns {shallowWrapper}
 */
-const setup = (initialState={}) => {
+const setup = (initialState={}, props={}) => {
 	const store = storeFactory(initialState);
-	const wrapper = shallow(<App store={store}/>).dive().dive()
+	const wrapper = shallow(<App store={store} props={props}/>).dive().dive()
 	return wrapper 
 }
 
@@ -40,7 +40,7 @@ describe('render', () => {
 
 		}
 
-		wrapper = setup(initialState);
+		wrapper = setup(initialState,{});
 	})
 
 	test('render without crashing', () => {
@@ -61,7 +61,30 @@ describe('render', () => {
 		expect(component.length).toBe(1)
 
 	})
+	test('`updatePlayersFilter` should be a function on the props', () => {
+
+		const getUpdatePlayersFilter = wrapper.instance().props.actions.updatePlayersFilter
+
+		expect(getUpdatePlayersFilter).toBeInstanceOf(Function)
+	})
+	test('`playersFetchData` should be a function on the props', () => {
+
+		const getPlayersFetchData = wrapper.instance().props.actions.playersFetchData
+
+		expect(getPlayersFetchData).toBeInstanceOf(Function)
+	})
+	test('`playersFetchData` shuld run on `componentDidMount`', () => {
+		const playersFetchDataMock = jest.fn()
+		wrapper.instance().props.actions.playersFetchData = playersFetchDataMock
+
+
+		wrapper.instance().componentDidMount()
+
+		const playersFetchDataCallCount = playersFetchDataMock.mock.calls.length
+		expect(playersFetchDataCallCount).toBe(1)
+	})
 
 })
+
 
 

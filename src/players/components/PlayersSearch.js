@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as playersActions  from '../actions';
 
 import { TextField, MenuItem, Grid, Button } from '@material-ui/core';
 
@@ -38,7 +40,7 @@ class PlayersSearch extends React.Component{
 	changeAge = this.updateFieldEvent('age')
 	onSubmitForm = (e) => {
 		e.preventDefault()
-		this.props.onSubmitForm({
+		this.props.actions.updatePlayersFilter({
 			player_name: this.state.player_name.trim(),
 			position: this.state.position,
 			age: this.state.age
@@ -51,7 +53,7 @@ class PlayersSearch extends React.Component{
 		const {errors} = this.props
 
 		return(
-			<Grid container style={{ marginTop:20, marginBottom:20 }}>
+			<Grid container style={{ marginTop:20, marginBottom:20 }} data-test="players-search">
 				<form noValidate autoComplete="off" style={{ width:100+'%' }}>
 					<Grid item className="inputs-wrapper" style={{ display:'flex', flexWrap:'nowrap', alignItems:"center"}} >
 					<TextField
@@ -126,4 +128,11 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, () => ({}))(PlayersSearch);
+function mapDispatchToProps(dispatch) {
+  return { 
+    actions: bindActionCreators(playersActions, dispatch),
+    
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayersSearch);

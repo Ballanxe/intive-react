@@ -1,3 +1,13 @@
+### React Players 
+
+This is a players application using React-Redux with selectors and custom middlewares.
+
+To run coverage tests run 
+```
+$ npm test -- --coverage
+```
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
