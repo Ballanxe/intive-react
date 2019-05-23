@@ -10,8 +10,6 @@ import PlayersList from '../../players/components/PlayersList';
 const setup = (props={}) => {
 
 	const wrapper = shallow(<PlayersList {...props}/>).dive()
-
-	// console.log(wrapper.debug());
 	return wrapper
 }
 

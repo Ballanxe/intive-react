@@ -1,11 +1,9 @@
 import checkPropTypes from 'check-prop-types';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import rootReducer from '../rootReducer';
 import { middlewares } from '../store/configureStore';
 
-import players from '../players'
-import playersReducer from '../players/reducer'
+
 
 /**
 * Create a testing store with imported reducers, middlewares, and initial state.
@@ -15,20 +13,6 @@ import playersReducer from '../players/reducer'
 * @returns {Store} - Redux store.
 */
 
-
-// Instead of passing the actual Store, you can use a package named redux-mock-store
-// This is recommended if you want to test intermediate actions as loading while wating
-// a response 
-// const playersReducer = players.reducer
-// export const storeFactory = (initialState) => {
-// 	const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
-// 	return createStoreWithMiddleware(
-// 		rootReducer, 
-// 		initialState
-// 	); 
-// }
-
-// export const middlewares = [thunk,formValidationMiddleware];
 
 export const storeFactory = (initialState) => {
 	return createStore(

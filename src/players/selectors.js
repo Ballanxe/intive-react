@@ -6,6 +6,11 @@ const searchPosition = state => state.position
 const searchAge = state => state.age
 
 
+/**
+ * Selector that filters players by name position and age
+ * @returns {array} - a list of objects filtered from all player
+ */
+
 export const searchedPlayersSelector = createSelector(
   [allPlayers, searchName, searchPosition, searchAge],
 (players, name, position, age) =>

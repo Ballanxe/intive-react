@@ -28,7 +28,12 @@ class PlayersSearch extends React.Component{
 		age: '' 
 
 	}
-
+	/**
+		* Update component state with the inputs data.
+		* @param {object} ev - The envent object
+		* @param {string} key - the field name to be updated 
+		* @function updateFieldEvent
+	*/
 	updateFieldEvent = key => ev => {
 
 		this.setState({
@@ -38,6 +43,11 @@ class PlayersSearch extends React.Component{
 	changeName = this.updateFieldEvent('player_name')
 	changePosition = this.updateFieldEvent('position')
 	changeAge = this.updateFieldEvent('age')
+	/**
+		* Action creator to update store with the input data
+		* @param {object} ev - The envent object
+		* @function onSubmitForm
+	*/
 	onSubmitForm = (e) => {
 		e.preventDefault()
 		this.props.actions.updatePlayersFilter({

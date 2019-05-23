@@ -25,10 +25,6 @@ describe('testing search filter', () => {
 			}
 		})
 	})
-	// name error
-	// age error
-	// no players found
-	// players found 
 
 	describe('should find player', () => {
 
@@ -63,8 +59,6 @@ describe('testing search filter', () => {
 		test('should update state with params', () => {
 			store.dispatch(a.updatePlayersFilter(searchPam))
 			const state = store.getState()
-
-
 			expect(state).toEqual(baseExpectedState)
 
 		})

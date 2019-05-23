@@ -3,7 +3,6 @@ import * as t from '../../players/actionTypes';
 
 test('returns default initial state of `false` when no action is passed', () =>{
 
-	// Make sure the test pass object to the action 
 	const newState = playersReducer(undefined, {});
 
 	const expectedState = {

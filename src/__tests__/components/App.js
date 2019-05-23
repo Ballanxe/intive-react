@@ -76,10 +76,7 @@ describe('render', () => {
 	test('`playersFetchData` shuld run on `componentDidMount`', () => {
 		const playersFetchDataMock = jest.fn()
 		wrapper.instance().props.actions.playersFetchData = playersFetchDataMock
-
-
 		wrapper.instance().componentDidMount()
-
 		const playersFetchDataCallCount = playersFetchDataMock.mock.calls.length
 		expect(playersFetchDataCallCount).toBe(1)
 	})
